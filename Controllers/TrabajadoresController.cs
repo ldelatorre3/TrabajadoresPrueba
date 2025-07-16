@@ -104,6 +104,36 @@ namespace TrabajadoresPrueba.Controllers
             return View(trabajador);
         }
 
+        // GET: Trabajadores/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var trabajador = await _context.Trabajadores
+                .Include(t => t.Departamento)
+                .Include(t => t.Provincia)
+                .Include(t => t.Distrito)
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (trabajador == null) return NotFound();
+
+            return View(trabajador);
+        }
+
+        // POST: Trabajadores/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var trabajador = await _context.Trabajadores.FindAsync(id);
+            if (trabajador != null)
+            {
+                _context.Trabajadores.Remove(trabajador);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
 
         // POST: Trabajadores/Create
         [HttpPost]
