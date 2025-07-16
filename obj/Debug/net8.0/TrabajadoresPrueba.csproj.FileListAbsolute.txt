@@ -167,3 +167,5 @@ C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresP
 C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresPrueba\obj\Debug\net8.0\TrabajadoresPrueba.pdb
 C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresPrueba\obj\Debug\net8.0\TrabajadoresPrueba.genruntimeconfig.cache
 C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresPrueba\obj\Debug\net8.0\ref\TrabajadoresPrueba.dll
+C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresPrueba\bin\Debug\net8.0\Select.Html.dep
+C:\Users\LORENZO DE LA TORRE\Desktop\Ordenar\carpeta's\Portafolios\TrabajadoresPrueba\bin\Debug\net8.0\Select.Tools.dep
