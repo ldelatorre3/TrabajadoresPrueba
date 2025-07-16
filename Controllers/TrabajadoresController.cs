@@ -16,17 +16,21 @@ namespace TrabajadoresPrueba.Controllers
         }
 
         // GET: Trabajadores
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sexo)
         {
-            var trabajadores = await _context.Trabajadores
+            ViewData["SexoSeleccionado"] = sexo;
+
+            var trabajadores = _context.Trabajadores
                 .Include(t => t.Departamento)
                 .Include(t => t.Provincia)
                 .Include(t => t.Distrito)
-                .ToListAsync();
+                .AsQueryable();
 
-            return View(trabajadores);
+            if (!string.IsNullOrEmpty(sexo))
+                trabajadores = trabajadores.Where(t => t.Sexo == sexo);
+
+            return View(await trabajadores.ToListAsync());
         }
-
         // GET: Trabajadores/Create
         public IActionResult Create()
         {
