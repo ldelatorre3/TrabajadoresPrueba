@@ -1,0 +1,51 @@
+@model TrabajadoresPrueba.Models.Trabajador
+
+@{
+    ViewData["Title"] = "Registrar Trabajador";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Tipo Documento</label>
+        <select asp-for="TipoDocumento" class="form-control" asp-items="ViewBag.TipoDocumento"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Número Documento</label>
+        <input asp-for="NumeroDocumento" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Nombres</label>
+        <input asp-for="Nombres" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Sexo</label>
+        <select asp-for="Sexo" class="form-control">
+            <option value="">-- Seleccionar --</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Departamento</label>
+        <select asp-for="DepartamentoId" class="form-control" asp-items="ViewBag.Departamentos"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Provincia</label>
+        <select asp-for="ProvinciaId" class="form-control" asp-items="ViewBag.Provincias"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Distrito</label>
+        <select asp-for="DistritoId" class="form-control" asp-items="ViewBag.Distritos"></select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Registrar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
