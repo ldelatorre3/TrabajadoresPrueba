@@ -1,4 +1,4 @@
-using TrabajadoresWeb.Data;
+using TrabajadoresPrueba.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

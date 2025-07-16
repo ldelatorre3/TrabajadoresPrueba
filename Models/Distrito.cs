@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TrabajadoresWeb.Models
+namespace TrabajadoresPrueba.Models
 {
     [Table("Distrito")]
     public class Distrito

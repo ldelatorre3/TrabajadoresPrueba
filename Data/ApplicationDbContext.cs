@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TrabajadoresWeb.Models;
+using TrabajadoresPrueba.Models;
 
-namespace TrabajadoresWeb.Data
+namespace TrabajadoresPrueba.Data
 {
     public class ApplicationDbContext : DbContext
     {
