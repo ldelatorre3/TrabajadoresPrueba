@@ -44,6 +44,67 @@ namespace TrabajadoresPrueba.Controllers
             return View();
         }
 
+        // GET: Trabajadores/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var trabajador = await _context.Trabajadores.FindAsync(id);
+            if (trabajador == null) return NotFound();
+
+            ViewData["Departamentos"] = new SelectList(_context.Departamentos, "Id", "NombreDepartamento", trabajador.DepartamentoId);
+            ViewData["Provincias"] = new SelectList(_context.Provincias, "Id", "NombreProvincia", trabajador.ProvinciaId);
+            ViewData["Distritos"] = new SelectList(_context.Distritos, "Id", "NombreDistrito", trabajador.DistritoId);
+            ViewData["TipoDocumento"] = new SelectList(new[]
+            {
+                new { Value = "DNI", Text = "DNI" },
+                new { Value = "RUC", Text = "RUC" },
+                new { Value = "CE", Text = "Carné de Extranjería" }
+            }, "Value", "Text", trabajador.TipoDocumento);
+
+            return View(trabajador);
+        }
+
+        // POST: Trabajadores/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, Trabajador trabajador)
+        {
+            if (id != trabajador.Id) return NotFound();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(trabajador);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!_context.Trabajadores.Any(e => e.Id == trabajador.Id))
+                        return NotFound();
+                    else
+                        throw;
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            // Recargar combos si falla
+            ViewData["Departamentos"] = new SelectList(_context.Departamentos, "Id", "NombreDepartamento", trabajador.DepartamentoId);
+            ViewData["Provincias"] = new SelectList(_context.Provincias, "Id", "NombreProvincia", trabajador.ProvinciaId);
+            ViewData["Distritos"] = new SelectList(_context.Distritos, "Id", "NombreDistrito", trabajador.DistritoId);
+            ViewData["TipoDocumento"] = new SelectList(new[]
+            {
+                new { Value = "DNI", Text = "DNI" },
+                new { Value = "RUC", Text = "RUC" },
+                new { Value = "CE", Text = "Carné de Extranjería" }
+            }, "Value", "Text", trabajador.TipoDocumento);
+
+            return View(trabajador);
+        }
+
+
         // POST: Trabajadores/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
